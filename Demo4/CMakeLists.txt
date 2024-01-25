@@ -16,7 +16,10 @@ configure_file (
   "${PROJECT_BINARY_DIR}/config.h"
   )
 
+
+
 # 是否加入 MathFunctions 库
+message("USE_MYMATH = ${USE_MYMATH}")
 if(USE_MYMATH)
     # 将math添加到include路径中
     # 这样cmake在编译过程中就能直接找到math中的头文件
@@ -24,9 +27,11 @@ if(USE_MYMATH)
     include_directories("${PROJECT_SOURCE_DIR}/math")
     add_subdirectory(math)
     # 将 EXTRA_LIBS 的值与字符串 "MathFunctions" 连接，重新赋值给 EXTRA_LIBS
-    set (EXTRA_LIBS ${EXTRA_LIBS} MathFunctions)
+    set (EXTRA_LIBS ${EXTRA_LIBS} MathFunctions4)
+    message("link custom m")
 else()
     # 不链接math库会报错，因为linux中默认没有math库
+    message("link system m")
     LINK_LIBRARIES(m)
 endif(USE_MYMATH)
 
@@ -35,5 +40,5 @@ endif(USE_MYMATH)
 aux_source_directory(. DIR_SRCS)
 
 # 指定生成目标
-add_executable (Demo ${DIR_SRCS})
-target_link_libraries (Demo  ${EXTRA_LIBS})
+add_executable (Demo4 ${DIR_SRCS})
+target_link_libraries (Demo4  ${EXTRA_LIBS})
