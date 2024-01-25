@@ -1,4 +1,7 @@
 https://www.hahack.com/codes/cmake/
+
+1.参考mymuduo 写一个动态链接的demo出来 
+
 # demo0 
 
 project(cmake_demo) 可以在多个CMakeLists里出现
